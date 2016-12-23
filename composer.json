@@ -1,0 +1,17 @@
+{
+  "name": "unlcms/unl_filter",
+  "description": "Custom text filters.",
+  "type": "drupal-module",
+  "authors": [
+    {
+      "name": "Tim Steiner (spam38)",
+      "homepage": "https://www.drupal.org/u/spam38",
+      "role": "Original author"
+    },
+    {
+      "name": "Eric Rasmussen (ericras)",
+      "homepage": "https://www.drupal.org/u/ericras",
+      "role": "Maintainer"
+    }
+  ]
+}

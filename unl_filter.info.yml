@@ -1,0 +1,6 @@
+name: 'UNL Filter'
+description: 'Custom text filters.'
+package: 'UNL'
+type: module
+core: 8.x
+version: 1.x
