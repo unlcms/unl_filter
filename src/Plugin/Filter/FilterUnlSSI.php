@@ -8,7 +8,6 @@ namespace Drupal\unl_filter\Plugin\Filter;
 
 use Drupal\filter\FilterProcessResult;
 use Drupal\filter\Plugin\FilterBase;
-use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Provides a filter to do [[include-url:"some/path"]] includes.
@@ -16,7 +15,7 @@ use Drupal\Core\Form\FormStateInterface;
  * @Filter(
  *   id = "filter_unl_ssi",
  *   title = @Translation("UNL SSI Filter"),
- *   description = @Translation('Implements the [[include-url:"some/path"]] Server Side Include directive.'),
+ *   description = @Translation("Implements the [[include-url:'some/path']] Server Side Include directive."),
  *   type = Drupal\filter\Plugin\FilterInterface::TYPE_MARKUP_LANGUAGE,
  * )
  */
@@ -112,7 +111,9 @@ class FilterUnlSSI extends FilterBase {
 
   /**
    * Emulate the SSI process inside Drupal.
-   * @param $url
+   *
+   * @param string $url
+   *
    * @return string
    */
   public function emulateSSI($url) {
@@ -147,7 +148,9 @@ class FilterUnlSSI extends FilterBase {
 
   /**
    * Change the SSI into an ESI.
-   * @param $url
+   *
+   * @param string $url
+   *
    * @return string
    */
   public function toESI($url) {
@@ -159,8 +162,10 @@ class FilterUnlSSI extends FilterBase {
   /**
    * Fetch the contents at the given URL and cache the result using
    * Drupal's cache for as long as the response headers allow.
+   *
    * @param string $url
    * @param resource $context
+   *
    * @return string
    */
   public function urlGetContents($url, $context = NULL, &$headers = array()) {
@@ -187,7 +192,7 @@ class FilterUnlSSI extends FilterBase {
     }
 
     // If cached in the drupal cache, return it.
-    $data = cache_get(__FUNCTION__ . $url);
+    $data = \Drupal::cache()->get((__FUNCTION__ . $url));
     if ($data && time() < $data->data['expires']) {
       $headers = $data->data['headers'];
 
